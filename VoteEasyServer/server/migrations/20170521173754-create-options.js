@@ -24,13 +24,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }, 
-      pollId: {
+      PollId: {
         type: Sequelize.INTEGER, 
         onDelete: 'CASCADE', 
         references: {
           model: 'Polls', 
-          key: 'id',  
-          as: 'pollId'
+          key: 'id'
         }
       }
     });

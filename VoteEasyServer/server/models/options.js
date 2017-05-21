@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         Options.belongsTo(models.Polls, {
-          foreignKey: 'pollId', 
+          foreignKey: 'PollId', 
           onDelete: 'CASCADE'
         });
       }
