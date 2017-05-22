@@ -10,14 +10,14 @@ import * as userReducer from './users';
 export interface State {
 	users: Array<User>, 
 	polls: Array<Poll>, 
-	currentlySelectedPollId: number, 
+	currentPoll: number, 
 	loading: boolean
 };
 
 const reducers = {
-	users: userReducer, 
-	polls: pollReducer
+	users: userReducer.reducer, 
+	polls: pollReducer.reducer
 }
 
-const reducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
+export const reducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
 

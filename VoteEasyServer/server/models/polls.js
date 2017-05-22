@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
           onDelete: 'CASCADE'
         });
         Polls.hasMany(models.Options, {
-          foreignKey: 'pollId'
+          foreignKey: 'PollId'
         });
       }
     }
