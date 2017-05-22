@@ -8,7 +8,22 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/user', (req, res, next) => { //setting up this route to create a user
+router.get('/user/:user_id', (req, res, next) => {
+	const uuid = req.params.user_id;
+	models.Users.find({
+		where: { uuid: uuid }, 
+		include: [ {
+			model: models.Polls, 
+			include: [
+				{ model: models.Options }
+			]
+		}]
+	}).then((user) => {
+		res.json(user);
+	});
+});
+
+router.post('/user', (req, res, next) => { //setting up this route to create a user
 	//will require a username and uuid
     const name = 'zaid', 
 		  uuid = 12312;
@@ -42,7 +57,9 @@ router.post('/new-poll', (req, res, next) => {
 			include: [{
 				association: models.Polls.hasMany(models.Options)
 			}]
-		})
+		}).then((poll) => {
+			res.json(poll);
+		});
 	});
 });	
 
