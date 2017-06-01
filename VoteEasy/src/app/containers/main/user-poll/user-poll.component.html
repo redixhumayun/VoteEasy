@@ -1,0 +1,9 @@
+<div class="user-polls">
+	<div *ngFor="let datum of data | async">
+		<a class="list-group-item clearfix"
+		mouseOver [colorChoice]="'blue'"
+		[routerLink]="['/poll-detail', datum.poll_id]">
+			{{ datum.poll_title }}
+		</a>
+	</div>	
+</div>

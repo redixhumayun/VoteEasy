@@ -103,7 +103,7 @@ router.post('/new-option', (req, res, next) => {
 
 });
 
-//This route is to  fetch all possible Polls and Options of specific poll for specific user
+//This route is to  fetch all possible Polls and Options of all polls for specific user
 router.get('/user/:user_id', (req, res, next) => {
 	const uuid = req.params.user_id;
 	models.Users.find({
@@ -140,7 +140,7 @@ router.post('/add-vote', (req, res, next) => {
 	});
 });
 
-//Use this router to sync all db and refresh the tables
+//Use this route to sync all db and refresh the tables
 router.get('/sync', (req, res, next) => {
 
 	async.waterfall([

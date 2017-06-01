@@ -32,7 +32,40 @@ describe('user reducer logic', () => {
 		expect(nextState).toEqual(users);
 	});
 
-	it('will create a new user and add it to the array', () => {
+	it('will check if user exists before adding to the state', () => {
+		const initialState: Array<User> = [
+			{
+				userName: 'redixhumayun', 
+				user_id: '123', 
+				isLoggedIn: false, 
+				polls_created_id: [123, 456, 7789]
+			}, 
+			{
+				userName: 'random', 
+				user_id: '354', 
+				isLoggedIn: true, 
+				polls_created_id: [22, 2, 35]
+			}
+		];
+
+		const newUser: User = {
+			userName: 'whatever', 
+			user_id: '123', 
+			isLoggedIn: false, 
+			polls_created_id: []
+		};
+
+		const action: actionImports.ActionInterface = new actionImports.AddUserAction(
+			newUser
+		);
+
+		const nextState = reducer(initialState, action);
+
+		expect(nextState).toEqual(initialState);
+
+	});
+
+	it('will create a new user and add it to the array', () => { //should only do this if user does not exist
 		const initialState: Array<User> = [
 			{
 				userName: 'redixhumayun', 

@@ -4,7 +4,39 @@ interface Action {
 	(state: Array<Poll>, action: {type: string, payload: any}) : Array<Poll>;
 }
 
-export const reducer: Action = (state = [], action) => {
+const initialState: Array<Poll> = [
+	{
+		poll_title: 'What is your favorite food?',
+		poll_id: 1, 
+		options: [ { name: 'option_1', votes: 0 }, { name: 'option_2', votes: 1 } ], 
+		voter_ids: [1156, 1555], 
+		createdBy: '601643662'
+	}, 
+	{
+		poll_title: 'What is your favorite game?',
+		poll_id: 2, 
+		options: [ { name: 'option_3', votes: 0 }, { name: 'option_4', votes: 1 } ], 
+		voter_ids: [1156, 1555], 
+		createdBy: '601643662'
+	}, 
+	{
+		poll_title: 'What is your favorite travel destination?', 
+		poll_id: 3, 
+		options: [ { name: 'option_5', votes: 0 }, { name: 'option_6', votes: 1 } ], 
+		voter_ids: [1156, 1555], 
+		createdBy: 'redixhumayun'
+	}, 
+	{
+		poll_title: 'What do you want to do?', 
+		poll_id: 4, 
+		options: [ { name: 'option_7', votes: 0 }, { name: 'option_8', votes: 1 } ], 
+		voter_ids: [1156, 1555], 
+		createdBy: 'redixhumayun'
+	}
+
+]
+
+export const reducer: Action = (state: Array<Poll> = initialState, action) => {
 	switch(action.type) {
 		case 'GET_POLLS':
 			return action.payload;

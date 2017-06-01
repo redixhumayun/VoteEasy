@@ -1,0 +1,6 @@
+<app-poll-list-refactor
+	*ngFor="let title of titles; let i=index"
+	[title]="title"
+	[id]="ids[i]">
+</app-poll-list-refactor>
+<router-outlet></router-outlet>

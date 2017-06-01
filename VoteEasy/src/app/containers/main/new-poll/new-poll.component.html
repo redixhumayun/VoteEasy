@@ -1,0 +1,24 @@
+<form [formGroup]="pollForm" (ngSubmit)="onSubmit()">
+	<div class='row'>
+		<label for='title'>Title</label>
+		<br>
+		<input type='text'
+		class='form-group'
+		formControlName='title'
+		name='title'>
+	</div>
+	<div class='row'>
+		<label for='options'>Options</label>
+		<br>
+		<textarea type='input'
+		class='form-group'
+		formControlName='options'
+		name='options'></textarea>
+	</div>
+	<div class='row'>
+		<button 
+		class='btn btn-primary' 
+		type='submit'
+		[disabled]="!pollForm.valid">Submit</button>
+	</div>
+</form>
