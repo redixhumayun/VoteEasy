@@ -84,8 +84,8 @@ export class AuthService {
 
   private dispatchUser(userProfile) {
     this.user_id = this.getUserId(userProfile.sub);
-    console.log(this.user_id);
     this.user_id$.next(this.user_id);
+    localStorage.setItem('user_id', this.user_id);
     const newUser: User = {
       userName: userProfile.sub, 
       user_id: this.user_id, 
@@ -112,6 +112,7 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('this.user_id');
     this.router.navigate(['/']);
     this.setLoggedIn(false);
   }
@@ -119,7 +120,6 @@ export class AuthService {
   public isAuthenticated(): boolean {
     // Check if there's an unexpired access token
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    console.log('Checking isAuthenticated');
     return new Date().getTime() < expiresAt;
   }
 

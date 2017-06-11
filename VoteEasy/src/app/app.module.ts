@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { StoreModule } from '@ngrx/store';
 
+import { ChartsModule } from 'ng2-charts';
+
 import { reducer } from './reducers';
 import { logger } from './reducers/middleware/logger.middleware';  
 
@@ -20,6 +22,7 @@ import { CallbackComponent } from './components/callback.component';
 import { AuthService } from './auth/auth.service';
 import { UserPollComponent } from './containers/main/user-poll/user-poll.component';
 import { NewPollComponent } from './containers/main/new-poll/new-poll.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 
 @NgModule({
@@ -33,6 +36,7 @@ import { NewPollComponent } from './containers/main/new-poll/new-poll.component'
     CallbackComponent,
     UserPollComponent,
     NewPollComponent,
+    ChartComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -40,6 +44,7 @@ import { NewPollComponent } from './containers/main/new-poll/new-poll.component'
     FormsModule,
     ReactiveFormsModule,
     HttpModule, 
+    ChartsModule,
     StoreModule.provideStore(logger(reducer))
   ],
   providers: [AuthService],

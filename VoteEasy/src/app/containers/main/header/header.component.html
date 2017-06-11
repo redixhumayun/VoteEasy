@@ -1,16 +1,14 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-		 	<a class="navbar-brand">VoteEasy</a>
+		 	<a class="navbar-brand" [routerLink]="['']">VoteEasy</a>
 		</div>
 		<div class="nav navbar-nav navbar-right">
 			<a class="navbar-brand" (click)="onLogIn()" *ngIf="!this.authenticated">Log In</a>
 			<ng-template [ngIf]="this.authenticated">
-				<a class="navbar-brand">New Poll</a>
+				<a class="navbar-brand" [routerLink]="['/new-poll', user_id]">New Poll</a>
 				<a class="navbar-brand" [routerLink]="['/user-polls', user_id]">My Polls</a>
 				<a class="navbar-brand" (click)="onLogOut()">Log Out</a>
 			</ng-template>
-
-			<!-- <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost:4200" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 		</div>
 	</div>

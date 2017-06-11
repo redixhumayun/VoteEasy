@@ -28,6 +28,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscribe_user_id = this.authService.user_id$.subscribe(
                      (value ) => {
                        this.user_id = value;
+                       if(this.user_id == undefined) {
+                         this.user_id = localStorage.getItem('user_id');
+                       }
                      });
   }
 

@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { Poll } from '../../../models/poll.model';
 import * as fromRoot from '../../../reducers/index';
+import * as pollActions from '../../../actions/polls';
 
 @Component({
   selector: 'app-new-poll',
@@ -52,6 +53,11 @@ export class NewPollComponent implements OnInit {
   		createdBy: this.user_id, 
   		voter_ids: []
   	}
+
+  	this.store.dispatch(new pollActions.AddPollAction(this.newPoll));
+
+    this.router.navigate(['/']);
+
   }
 
 }

@@ -36,6 +36,7 @@ export class MainComponent implements OnInit, OnDestroy {
       this.titles = data.title;
       this.ids = data.poll_id;
     });
+
   }
 
 
